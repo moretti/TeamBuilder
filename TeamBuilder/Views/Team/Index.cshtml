@@ -13,7 +13,6 @@
             <strong>
                 @Html.ActionLink(team.Name, MVC.Team.Edit(team.Id))
             </strong>
-            @*(Created on @team.CreatedAt.ToString("dd/MM/yyyy"))*@
 
             @if (!team.Employees.Any())
             {

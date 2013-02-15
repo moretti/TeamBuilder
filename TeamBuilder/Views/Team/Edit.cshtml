@@ -10,6 +10,14 @@
     
     <fieldset>
         @Html.EditorFor(x => x, "EditTeamViewModel")
+
+        <div class="control-group">
+            
+            @Html.LabelFor(x => x.CreatedAt, new { @class = "control-label" })
+            <div class="controls">
+                <span>@Model.CreatedAt.ToString("dd/MM/yyyy")</span>
+            </div>
+        </div>
     </fieldset>
     
     <div class="form-actions">

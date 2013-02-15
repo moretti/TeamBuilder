@@ -15,5 +15,8 @@ namespace TeamBuilder.ViewModels
         [Required(ErrorMessage = "Required")]
         [StringLength(50, ErrorMessage = "Must be under 50 characters")]
         public string Name { get; set; }
+
+        [DisplayName("Created")]
+        public DateTime CreatedAt { get; set; }
     }
 }

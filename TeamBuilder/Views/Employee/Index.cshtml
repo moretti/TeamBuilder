@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TeamBuilder.ViewModels.IndexEmployeeViewModel>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h1>Employees</h1>
+
+<div>
+    <table class="table-bordered table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date of birth</th>
+                <th>Team</th>
+                <th style="width: 16px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(String.Format("{0} {1}", employee.FirstName, employee.LastName), MVC.Employee.Edit(employee.Id))</td>
+                    <td>@employee.DateOfBirth.ToString("dd/MM/yyyy")</td>
+                    <td>@Html.ActionLink(employee.TeamName, MVC.Team.Edit(employee.TeamId))</td>
+
+                    <td>
+                        <a class="tip" data-toggle="tooltip" data-title="Delete" href="@Url.Action(MVC.Employee.Delete(employee.Id, false))" >
+                            <i class="icon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p class="form-actions">
+        <a class="btn btn-medium" href="@Url.Action(MVC.Employee.Create())">Add employee
+        </a>
+    </p>
+</div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TeamBuilder.ViewModels.IndexTeamViewModel>
+
+@{
+    ViewBag.Title = "Teams";
+}
+
+<h1>Teams</h1>
+
+<div class="accordion">
+    @foreach (var team in Model)
+    {
+        <div class="accordion-heading">
+            <strong>
+                @Html.ActionLink(team.Name, MVC.Team.Edit(team.Id))
+            </strong>
+            @*(Created on @team.CreatedAt.ToString("dd/MM/yyyy"))*@
+
+            @if (!team.Employees.Any())
+            {
+                <span class="pull-right">
+                    <a class="tip" data-toggle="tooltip" data-title="Delete team" href="@Url.Action(MVC.Team.Delete(team.Id))">
+                        <i class="icon-trash"></i>
+                    </a>
+                </span>
+            }
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-inner">
+                <table class="table-striped table-condensed">
+                    <tbody>
+                        @foreach (var employee in team.Employees.OrderBy(x => x.LastName).ThenBy(x => x.FirstName))
+                        {
+                            <tr>
+                                <td>@Html.ActionLink(String.Format("{0} {1}", employee.FirstName, employee.LastName), MVC.Employee.Edit(employee.Id))</td>
+
+                                <td style="width: 16px;">
+                                    <a class="tip" data-toggle="tooltip" data-title="Delete employee" href="@Url.Action(MVC.Employee.Delete(employee.Id, true))">
+                                        <i class="icon-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+<p class="form-actions">
+    <a class="btn btn-medium" href="@Url.Action(MVC.Team.Create())">Add team</a>
+</p>

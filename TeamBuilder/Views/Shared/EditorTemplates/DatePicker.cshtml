@@ -1,0 +1,9 @@
+﻿@model DateTime? 
+
+@Html.TextBoxFor(
+    x => x, "{0:dd/MM/yyyy}",
+    new 
+    { 
+        data_date_format = "dd/mm/yyyy",
+        @class = "datepicker"
+    })

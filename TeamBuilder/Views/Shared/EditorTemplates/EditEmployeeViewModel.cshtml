@@ -1,0 +1,35 @@
+﻿@model TeamBuilder.ViewModels.EditEmployeeViewModel
+
+@Html.ValidationSummary(true)
+
+<div class="control-group">
+    @Html.LabelFor(x => x.FirstName, new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBoxFor(x => x.FirstName)
+        @Html.ValidationMessageFor(x => x.FirstName)
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(x => x.LastName, new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBoxFor(x => x.LastName)
+        @Html.ValidationMessageFor(x => x.LastName)
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(x => x.DateOfBirth, new { @class = "control-label" })
+    <div class="controls">
+        @Html.EditorFor(x => x.DateOfBirth, "DatePicker")
+        @Html.ValidationMessageFor(x => x.DateOfBirth)
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(x => x.SelectedTeamId, new { @class = "control-label" })
+    <div class="controls">
+        @Html.DropDownListFor(x => x.SelectedTeamId, Model.Teams)
+        @Html.ValidationMessageFor(x => x.SelectedTeamId)
+    </div>
+</div>

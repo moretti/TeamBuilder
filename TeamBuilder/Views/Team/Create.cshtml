@@ -1,0 +1,19 @@
+﻿@model TeamBuilder.ViewModels.EditTeamViewModel
+
+@{
+    ViewBag.Title = "New team";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form" }))
+{
+    <legend>New team</legend>
+    
+    <fieldset>
+        @Html.EditorFor(x => x, "EditTeamViewModel")
+    </fieldset>
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        @Html.ActionLink("Cancel", MVC.Team.Index(), new { @class = "btn" })
+    </div>
+}

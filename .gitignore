@@ -218,5 +218,5 @@ pip-log.txt
 ## Custom
 #############
 
-AppData/*.mdf
-AppData/*.ldf
+TeamBuilder/App_Data/*.mdf
+TeamBuilder/App_Data/*.ldf
